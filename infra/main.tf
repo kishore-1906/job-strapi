@@ -128,7 +128,7 @@ resource "aws_security_group" "rds_sg" {
 # 7. DB Subnet Group for RDS
 # --------------------------
 resource "aws_db_subnet_group" "strapi_db_subnets" {
-  name       = "strapi-db-subnet-group"
+  name       = "strapi-db-subnet-group-444"
   subnet_ids = [aws_subnet.public_a.id, aws_subnet.public_b.id]
 
   tags = { Name = "strapi-db-subnet-group-1" }
