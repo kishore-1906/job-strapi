@@ -33,8 +33,8 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
 
-      - name: Terraform Init
-        run: terraform init
+      - name: Terraform Init (S3 backend)
+        run: terraform init -input=false
 
       - name: Terraform Apply
         run: terraform apply -auto-approve
@@ -59,13 +59,22 @@ jobs:
       - name: Deploy Code to EC2
         run: |
           ssh -o StrictHostKeyChecking=no ec2-user@${{ needs.terraform.outputs.ec2_ip }} << 'EOF'
+            # Navigate to the cloned repo folder
             cd /home/ec2-user/job-strapi
-            git pull origin main
 
+            # Pull latest code from master
+            git pull origin master
+
+            # Go to backend
             cd backend
+
+            # Install dependencies
             npm install
+
+            # Build Strapi
             npm run build
 
+            # Restart Strapi using PM2
             pm2 restart strapi || pm2 start npm --name strapi -- start
             pm2 save
           EOF
