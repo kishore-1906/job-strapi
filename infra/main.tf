@@ -131,7 +131,7 @@ resource "aws_db_subnet_group" "strapi_db_subnets" {
   name       = "strapi-db-subnet-group"
   subnet_ids = [aws_subnet.public_a.id, aws_subnet.public_b.id]
 
-  tags = { Name = "strapi-db-subnet-group" }
+  tags = { Name = "strapi-db-subnet-group-1" }
 }
 
 # --------------------------
