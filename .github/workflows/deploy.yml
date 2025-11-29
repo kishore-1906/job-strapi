@@ -3,7 +3,7 @@ name: Strapi-CICD
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   terraform:
