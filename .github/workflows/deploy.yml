@@ -65,11 +65,10 @@ jobs:
             # Go to project folder
             cd /home/ec2-user/job-strapi
 
-            # Pull latest code
+            # Pull latest code from GitHub
             git pull origin master
 
-            # Install backend dependencies
-            cd backend
+            # Install backend dependencies (root-level backend)
             npm install
 
             # Build Strapi project
