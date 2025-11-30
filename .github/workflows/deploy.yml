@@ -51,30 +51,33 @@ jobs:
     needs: terraform
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
       - name: Add SSH Key
-        uses: webfactory/ssh-agent@v0.9.0
-        with:
-          ssh-private-key: ${{ secrets.EC2_SSH_KEY }}
+        run: |
+          echo "${{ secrets.EC2_SSH_KEY }}" > key.pem
+          chmod 600 key.pem
 
       - name: Deploy Code to EC2
         run: |
-          ssh -o StrictHostKeyChecking=no ec2-user@${{ needs.terraform.outputs.ec2_ip }} << 'EOF'
-            # Navigate to the cloned repo folder
+          ssh -i key.pem -o StrictHostKeyChecking=no ec2-user@${{ needs.terraform.outputs.ec2_ip }} << 'EOF'
+            # Go to project folder
             cd /home/ec2-user/job-strapi
 
-            # Pull latest code from master
+            # Pull latest code
             git pull origin master
 
-            # Go to backend
+            # Install backend dependencies
             cd backend
-
-            # Install dependencies
             npm install
 
-            # Build Strapi
+            # Build Strapi project
             npm run build
 
-            # Restart Strapi using PM2
+            # Restart or start PM2 service
             pm2 restart strapi || pm2 start npm --name strapi -- start
+
+            # Save PM2 config
             pm2 save
           EOF
