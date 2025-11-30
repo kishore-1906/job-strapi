@@ -1,7 +1,7 @@
-aws_region    = "ap-south-1"
+aws_region    = "us-east-1"
 instance_type = "t3.micro"
 
-key_name = "job-key.pem"
+key_name = "job-key"
 
 repo_url = "https://github.com/kishore-1906/job-strapi.git"
 

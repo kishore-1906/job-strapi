@@ -159,7 +159,7 @@ resource "aws_db_instance" "strapi_db" {
 # 9. EC2 Instance (Strapi)
 # --------------------------
 resource "aws_instance" "strapi" {
-  ami                         = "ami-0f58b397bc5c1f2e8" # Amazon Linux 2023 (ap-south-1; change if needed)
+  ami                         ="ami-0c101f26f147fa7fd"
   instance_type               = var.instance_type
   subnet_id                   = aws_subnet.public_a.id
   key_name                    = var.key_name
