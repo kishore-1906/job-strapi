@@ -7,7 +7,7 @@ variable "instance_type" {
 }
 
 variable "key_name" {
-  description = "job-key.pem"
+  description = "job-key"
 }
 
 variable "repo_url" {
