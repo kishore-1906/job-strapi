@@ -1,0 +1,19 @@
+{
+  "name": "job-strapi",
+  "version": "1.0.0",
+  "description": "Strapi backend for job portal",
+  "scripts": {
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build"
+  },
+  "dependencies": {
+    "@strapi/strapi": "latest",
+    "mysql2": "latest",
+    "pg": "^8.16.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.30.2",
+    "styled-components": "^6.1.19"
+  }
+}

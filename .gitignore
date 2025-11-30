@@ -1,7 +1,31 @@
-# Terraform
+# ===========================
+# Terraform Ignore
+# ===========================
 .terraform/
 .terraform.lock.hcl
 *.tfstate
 *.tfstate.backup
 crash.log
+
+# ===========================
+# Node / Strapi Backend Ignore
+# ===========================
+node_modules/
+.cache/
+.tmp/
+build/
+public/uploads/
+
+# Environment Files
+.env
+.env.*
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
 
