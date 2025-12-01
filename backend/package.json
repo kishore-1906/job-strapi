@@ -1,4 +1,4 @@
-{
+
   "name": "job-strapi",
   "version": "1.0.0",
   "description": "Strapi backend for job portal",
@@ -16,3 +16,4 @@
     "pg": "8.11.1"
   }
 }
+
